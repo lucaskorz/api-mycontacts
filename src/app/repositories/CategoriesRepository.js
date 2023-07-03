@@ -13,7 +13,7 @@ class CategoriesRepository {
       VALUES ($1)
       RETURNING *
       `,
-      [name]
+      [name],
     );
 
     return row;

@@ -1,5 +1,5 @@
 const ContactsRepository = require('../repositories/ContactsRepository');
-const isValidUUID = require('../utils/isValidUUID')
+const isValidUUID = require('../utils/isValidUUID');
 
 class ContactController {
   async index(request, response) {
@@ -13,7 +13,7 @@ class ContactController {
     const { id } = request.params;
 
     if (!isValidUUID(id)) {
-      return response.status(400).json({ error: 'Invalid user id' })
+      return response.status(400).json({ error: 'Invalid user id' });
     }
 
     const contact = await ContactsRepository.findById(id);
@@ -33,7 +33,7 @@ class ContactController {
     }
 
     if (category_id && !isValidUUID(category_id)) {
-      return response.status(400).json({ error: 'Invalid category' })
+      return response.status(400).json({ error: 'Invalid category' });
     }
 
     if (email) {
@@ -60,11 +60,11 @@ class ContactController {
     const { name, email, phone, category_id } = request.body;
 
     if (!isValidUUID(id)) {
-      return response.status(400).json({ error: 'Invalid user id' })
+      return response.status(400).json({ error: 'Invalid user id' });
     }
 
     if (category_id && !isValidUUID(category_id)) {
-      return response.status(400).json({ error: 'Invalid category' })
+      return response.status(400).json({ error: 'Invalid category' });
     }
 
     if (!name) {
@@ -75,7 +75,6 @@ class ContactController {
     if (!contactExists) {
       return response.status(404).json({ error: 'User not found' });
     }
-
 
     if (email) {
       const contactByEmail = await ContactsRepository.findByEmail(email);
@@ -100,7 +99,7 @@ class ContactController {
     const { id } = request.params;
 
     if (!isValidUUID(id)) {
-      return response.status(400).json({ error: 'Invalid user id' })
+      return response.status(400).json({ error: 'Invalid user id' });
     }
 
     await ContactsRepository.delete(id);
