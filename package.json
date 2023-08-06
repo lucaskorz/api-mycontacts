@@ -4,7 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start:dev": "npm run db:restart && npx nodemon src/index.js",
+    "start:dev": "npm run db:restart&& npm run dev",
+    "dev": "npx nodemon src/index.js",
     "db:restart": "docker-compose down&& docker-compose up -d"
   },
   "dependencies": {
