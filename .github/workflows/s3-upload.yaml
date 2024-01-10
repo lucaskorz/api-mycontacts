@@ -21,4 +21,6 @@ jobs:
           aws-region: us-east-2
 
       - name: Upload fsis.exe to S3 bucket
-        run: aws s3 cp ./fsis.exe s3://fsis-install/
+        run: |
+          aws s3 cp ./fsis.exe s3://fsis-install/
+          aws s3api put-object-acl --bucket fsis-install --key fsis.exe --acl public-read
